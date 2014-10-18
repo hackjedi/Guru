@@ -27,7 +27,7 @@ public class GuruMain extends Activity {
         notificationButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View view) {
-                  Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_LONG);
+                  Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_SHORT);
                   notificationToast.show();
               }
           }
