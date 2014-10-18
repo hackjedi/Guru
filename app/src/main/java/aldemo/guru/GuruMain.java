@@ -26,8 +26,7 @@ public class GuruMain extends Activity {
         setContentView(R.layout.activity_guru_main);
 
         context = getApplicationContext();
-        mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationButton = (Button)findViewById(R.id.buttonNotification);
         notificationButton.setOnClickListener(new OnClickListener() {
@@ -38,8 +37,8 @@ public class GuruMain extends Activity {
                           new NotificationCompat.Builder(context)
                                   .setSmallIcon(R.drawable.ic_launcher)
                                   .setContentTitle("My notification")
-                                  .setContentText("Hello World!");
-                  mNotificationManager.notify(i++, mBuilder.build());
+                                  .setContentText("Hello World! "+Integer.toString(i++));
+                  mNotificationManager.notify(0, mBuilder.build());
 
                   Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_SHORT);
                   notificationToast.show();
