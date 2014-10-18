@@ -1,8 +1,10 @@
 package aldemo.guru;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,8 @@ public class GuruMain extends Activity {
 
     Button notificationButton;
     Context context;
+    NotificationManager mNotificationManager;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +26,21 @@ public class GuruMain extends Activity {
         setContentView(R.layout.activity_guru_main);
 
         context = getApplicationContext();
+        mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationButton = (Button)findViewById(R.id.buttonNotification);
         notificationButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View view) {
+
+                  NotificationCompat.Builder mBuilder =
+                          new NotificationCompat.Builder(context)
+                                  .setSmallIcon(R.drawable.ic_launcher)
+                                  .setContentTitle("My notification")
+                                  .setContentText("Hello World!");
+                  mNotificationManager.notify(i++, mBuilder.build());
+
                   Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_SHORT);
                   notificationToast.show();
               }
