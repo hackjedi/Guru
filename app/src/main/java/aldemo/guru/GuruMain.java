@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -13,15 +14,17 @@ import android.widget.Toast;
 public class GuruMain extends Activity {
 
     Button notificationButton;
-    Context context = getApplicationContext();
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guru_main);
 
+        context = getApplicationContext();
+
         notificationButton = (Button)findViewById(R.id.buttonNotification);
-        notificationButton.setOnClickListener(new View.OnClickListener() {
+        notificationButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View view) {
                   Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_LONG);
