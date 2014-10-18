@@ -1,17 +1,35 @@
 package aldemo.guru;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class GuruMain extends Activity {
+
+    Button notificationButton;
+    Context context = getApplicationContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guru_main);
+
+        notificationButton = (Button)findViewById(R.id.buttonNotification);
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_LONG);
+                  notificationToast.show();
+              }
+          }
+
+        );
     }
 
 
