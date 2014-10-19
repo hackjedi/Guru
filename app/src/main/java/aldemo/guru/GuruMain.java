@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import joost.modules.NotificationModule;
+
 
 public class GuruMain extends Activity {
 
@@ -19,29 +21,32 @@ public class GuruMain extends Activity {
     Context context;
     NotificationManager mNotificationManager;
     int i = 0;
+    NotificationModule notificationModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guru_main);
 
-        context = getApplicationContext();
-        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationModule = new NotificationModule(getApplicationContext());
+        //context = getApplicationContext();
+        //mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationButton = (Button)findViewById(R.id.buttonNotification);
         notificationButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View view) {
 
-                  NotificationCompat.Builder mBuilder =
-                          new NotificationCompat.Builder(context)
-                                  .setSmallIcon(R.drawable.ic_launcher)
-                                  .setContentTitle("My notification")
-                                  .setContentText("Hello World! "+Integer.toString(i++));
-                  mNotificationManager.notify(0, mBuilder.build());
+//                  NotificationCompat.Builder mBuilder =
+//                          new NotificationCompat.Builder(context)
+//                                  .setSmallIcon(R.drawable.ic_launcher)
+//                                  .setContentTitle("My notification")
+//                                  .setContentText("Hello World! "+Integer.toString(i++));
+//                  mNotificationManager.notify(0, mBuilder.build());
+                  notificationModule.notifyNotification(notificationModule.newNotification(R.drawable.ic_launcher,"Title","Context text hello how much can we get in here"));
 
-                  Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_SHORT);
-                  notificationToast.show();
+                  //Toast notificationToast = Toast.makeText(context, "test notification", Toast.LENGTH_SHORT);
+                  //notificationToast.show();
               }
           }
 

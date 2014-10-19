@@ -3,7 +3,6 @@ package joost.modules;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.support.v4.app.NotificationCompat;
-
 import java.util.*;
 
 /**
@@ -13,7 +12,6 @@ import java.util.*;
 public class NotificationModule {
 
     private NotificationManager mNotificationManager;
-    private int notificationId = -1;
     private Context context;
     private ArrayList<NotificationCompat.Builder> notificationBuilderArray = new ArrayList<NotificationCompat.Builder>();
 
@@ -29,16 +27,24 @@ public class NotificationModule {
     Basic notification constructor with input variables
      */
     public int newNotification(int icon, String title, String content) {
-        notificationBuilderArray.add(notificationId++, new NotificationCompat.Builder(context).setSmallIcon(icon).setContentTitle(title).setContentText(content));
-        return notificationId;
+        notificationBuilderArray.add(new NotificationCompat.Builder(context).setSmallIcon(icon).setContentTitle(title).setContentText(content));
+        return notificationBuilderArray.size()-1;
+    }
+
+    /*
+    Basic notification constructor with notificationcompat builder object
+     */
+    public int newNotification(NotificationCompat.Builder notificationBuilder) {
+        notificationBuilderArray.add(notificationBuilder);
+        return notificationBuilderArray.size()-1;
     }
 
     /*
     Basic notification constructor without input variables
      */
     public int newNotification() {
-        notificationBuilderArray.add(notificationId++, new NotificationCompat.Builder(context));
-        return notificationId;
+        notificationBuilderArray.add(new NotificationCompat.Builder(context));
+        return notificationBuilderArray.size()-1;
     }
 
     /*
