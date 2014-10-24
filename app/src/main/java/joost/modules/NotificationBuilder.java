@@ -20,21 +20,24 @@ public class NotificationBuilder extends Builder {
     }
 
     @Override
-    public Builder setSmallIcon(int icon) {
+    public NotificationBuilder setSmallIcon(int icon) {
         this.smallIcon = icon;
-        return super.setSmallIcon(icon);
+        super.setSmallIcon(icon);
+        return this;
     }
 
     @Override
-    public Builder setContentTitle(CharSequence title) {
+    public NotificationBuilder setContentTitle(CharSequence title) {
         this.title = title.toString();
-        return super.setContentTitle(title);
+        super.setContentTitle(title);
+        return this;
     }
 
     @Override
-    public Builder setContentText(CharSequence text) {
+    public NotificationBuilder setContentText(CharSequence text) {
         this.content = text.toString();
-        return super.setContentText(text);
+        super.setContentText(text);
+        return this;
     }
 
     public String getTitle() {

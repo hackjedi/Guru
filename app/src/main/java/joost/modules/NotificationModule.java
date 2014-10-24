@@ -13,7 +13,7 @@ public class NotificationModule {
 
     private NotificationManager mNotificationManager;
     private Context context;
-    private ArrayList<NotificationCompat.Builder> notificationBuilderArray = new ArrayList<NotificationCompat.Builder>();
+    private ArrayList<NotificationBuilder> notificationBuilderArray = new ArrayList<NotificationBuilder>();
 
     /*
     Constructor
@@ -27,14 +27,14 @@ public class NotificationModule {
     Basic notification constructor with input variables
      */
     public int newNotification(int icon, String title, String content) {
-        notificationBuilderArray.add(new NotificationCompat.Builder(context).setSmallIcon(icon).setContentTitle(title).setContentText(content));
+        notificationBuilderArray.add(new NotificationBuilder(context).setSmallIcon(icon).setContentTitle(title).setContentText(content));
         return notificationBuilderArray.size()-1;
     }
 
     /*
     Basic notification constructor with notificationcompat builder object
      */
-    public int newNotification(NotificationCompat.Builder notificationBuilder) {
+    public int newNotification(NotificationBuilder notificationBuilder) {
         notificationBuilderArray.add(notificationBuilder);
         return notificationBuilderArray.size()-1;
     }
@@ -43,7 +43,7 @@ public class NotificationModule {
     Basic notification constructor without input variables
      */
     public int newNotification() {
-        notificationBuilderArray.add(new NotificationCompat.Builder(context));
+        notificationBuilderArray.add(new NotificationBuilder(context));
         return notificationBuilderArray.size()-1;
     }
 
