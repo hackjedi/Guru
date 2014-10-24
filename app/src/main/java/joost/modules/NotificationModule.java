@@ -61,7 +61,7 @@ public class NotificationModule {
     /*
     Set title of existing notification
      */
-    public void setSmallIcon(int id, String title) {
+    public void setTitle(int id, String title) {
         try {
             notificationBuilderArray.get(id).setContentTitle(title);
         } catch (IndexOutOfBoundsException e) {
@@ -100,5 +100,9 @@ public class NotificationModule {
         } catch (IndexOutOfBoundsException e) {
 
         }
+    }
+
+    public void notifyBundledNotifications(){
+        notificationBuilderArray.get(1).build();
     }
 }
